@@ -15,6 +15,8 @@ const Form = ()=>{
     //Creo un array con useState para almacenar los valores de la temperatura
     //para despues pasar el array al archivo Info donde se mostraran los valores
     const [weather, setWeather] = useState([])
+    //Key de openweathermap
+    const key = require('../key')
     //Funcion para consultar a la api de openweather
     const getWeather = async e =>{
         e.preventDefault()
@@ -24,7 +26,7 @@ const Form = ()=>{
         //Si los campos han sido rellenados, que ejecute la consulta a la api
         if(city && country){
             //Consulta a la API
-            const url = `https://api.openweathermap.org/data/2.5/weather?q=${city},${country}&appid=eafc45849eb0ce039a5584602049452c&units=metric`
+            const url = `https://api.openweathermap.org/data/2.5/weather?q=${city},${country}&appid=${key}&units=metric`
             const response = await fetch(url)
             //Almaceno la informacion en formato json
             const data = await response.json()
